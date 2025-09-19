@@ -1,0 +1,73 @@
+body {
+    background-color: powderblue;
+    color: black;
+}
+
+.gameTitle>h1 {
+    margin: 0px;
+}
+
+.gameWrapper {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.gameWrapper>div {
+    margin-bottom: 20px;
+}
+
+.gameBody {
+    border: 1px solid black;
+}
+
+.gameDisplays {
+    display: flex;
+    flex-direction: row;
+}
+
+.gameDisplays>div {
+    background-color: aliceblue;
+    color: black;
+    flex: 1;
+    border: 1px solid black;
+    text-align: center;
+}
+
+.board {
+    display: inline-block;
+    margin: 20px;
+}
+
+.cell {
+    width: 30px;
+    height: 30px;
+    border: 1px solid black;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 20px;
+    background-color: white;
+    color: black;
+}
+
+.revealed {
+    background-color: lightgray;
+    color: black;
+    border: 1px solid black;
+}
+
+.bomb {
+    background-color: #ff3333;
+}
+
+.flagged {
+    background-color: green;
+}
+
+.resetButton {
+    cursor: pointer;
+}
