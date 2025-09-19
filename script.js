@@ -27,6 +27,7 @@ function updateLength() {
         sizeX = 2;
     } else if (sizeX > 42) {
         sizeX = 42;
+        lengthInput.value = 42;
     }
     maxBombs = sizeX * sizeY - 1;
     if (numberBombs > maxBombs) {
@@ -41,6 +42,7 @@ function updateHeight() {
         sizeY = 2;
     } else if (sizeY > 42) {
         sizeY = 42;
+        heightInput.value = 42;
     }
     maxBombs = sizeX * sizeY - 1;
     if (numberBombs > maxBombs) {
