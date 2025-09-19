@@ -257,6 +257,7 @@ function revealCell(board, x, y, sizeX, sizeY) {
     }
     renderBoard(board, sizeX, sizeY)
     if (cellsHidden == numberBombs && !lost) {
+        lost = true
         setTimeout(() => {
             alert("GG EZ !");
         }, 0);
