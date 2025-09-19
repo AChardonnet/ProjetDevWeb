@@ -24,6 +24,42 @@ body {
     border: 1px solid black;
 }
 
+.gameOptions {
+    background-color: aliceblue;
+    display: flex;
+    flex-direction: row;
+}
+
+.gameOptionsPresets {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    border: 0px solid black;
+}
+
+.gameOptionsPresets>div {
+    background-color: aliceblue;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex: 1;
+    cursor: pointer;
+}
+
+.gameOptionsCustom {
+    border: 1px solid black;
+    flex: 1;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.gameOptionsCustom>h4 {
+    margin: 0px;
+}
+
 .gameDisplays {
     display: flex;
     flex-direction: row;

@@ -3,10 +3,60 @@ let sizeY = 9;
 let numberBombs = 10;
 let bombsLeft = numberBombs;
 let cellsHidden = sizeX * sizeY;
+let maxBombs = sizeX * sizeY - 1;
 
 const gameBoard = document.getElementById("gameBoard");
 const bombsLeftBox = document.getElementById("bombsLeft");
 const cellsLeftBox = document.getElementById("cellsLeft");
+
+const lengthInput = document.getElementById('lengthInput');
+const heightInput = document.getElementById('heightInput');
+const minesInput = document.getElementById('minesInput');
+
+lengthInput.addEventListener('input', updateLength);
+heightInput.addEventListener('input', updateHeight);
+minesInput.addEventListener('input', updateMines);
+
+lengthInput.value = sizeX;
+heightInput.value = sizeY;
+minesInput.value = numberBombs;
+
+function updateLength() {
+    sizeX = parseInt(lengthInput.value, 10) || 0;
+    if (sizeX < 2) {
+        sizeX = 2;
+    }
+    maxBombs = sizeX * sizeY - 1;
+    if (numberBombs > maxBombs) {
+        numberBombs = maxBombs;
+        minesInput.value = maxBombs;
+    }
+    initializeGame()
+}
+function updateHeight() {
+    sizeY = parseInt(heightInput.value, 10) || 0;
+    if (sizeY < 2) {
+        sizeY = 2;
+    }
+    maxBombs = sizeX * sizeY - 1;
+    if (numberBombs > maxBombs) {
+        numberBombs = maxBombs;
+        minesInput.value = maxBombs;
+    }
+    initializeGame()
+}
+function updateMines() {
+    numberBombs = parseInt(minesInput.value, 10) || 0;
+    if (numberBombs < 0) {
+        numberBombs = 0;
+    }
+    maxBombs = sizeX * sizeY - 1;
+    if (numberBombs > maxBombs) {
+        numberBombs = maxBombs;
+        minesInput.value = maxBombs;
+    }
+    initializeGame()
+}
 
 function newGame(numberBombs, sizeX, sizeY) {
     board = newBoard(sizeX, sizeY)
@@ -142,7 +192,7 @@ function flagCell(board, x, y, sizeX, sizeY) {
 function renderBoard(board, sizeX, sizeY) {
     console.log("rendering board")
     gameBoard.innerHTML = ""
-    bombsLeftBox.innerHTML = "Bombs Left: " + bombsLeft
+    bombsLeftBox.innerHTML = "Mines Left: " + bombsLeft
     cellsLeftBox.innerHTML = "Cells Left: " + cellsHidden
 
     for (let i = 0; i < sizeY; i++) {
@@ -215,14 +265,47 @@ function revealCell(board, x, y, sizeX, sizeY) {
 }
 
 function initializeGame() {
-    sizeX = 9;
-    sizeY = 9;
-    numberBombs = 10;
     bombsLeft = numberBombs;
     cellsHidden = sizeX * sizeY;
 
     board = newGame(numberBombs, sizeX, sizeY)
     renderBoard(board, sizeX, sizeY)
+}
+
+function presetEasy() {
+    numberBombs = 10;
+    sizeX = 9;
+    sizeY = 9;
+
+    lengthInput.value = 9;
+    heightInput.value = 9;
+    minesInput.value = 10;
+
+    initializeGame();
+}
+
+function presetMedium() {
+    numberBombs = 40;
+    sizeX = 16;
+    sizeY = 16;
+
+    lengthInput.value = 16;
+    heightInput.value = 16;
+    minesInput.value = 40;
+
+    initializeGame();
+}
+
+function presetHard() {
+    numberBombs = 99;
+    sizeX = 30;
+    sizeY = 16;
+
+    lengthInput.value = 30;
+    heightInput.value = 16;
+    minesInput.value = 99;
+
+    initializeGame();
 }
 
 initializeGame()

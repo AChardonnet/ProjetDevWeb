@@ -10,7 +10,25 @@
 			<div class="gameTitle">
 				<h1>THE BEST MINESWEEPER</h1>
 			</div>
-			<div class="gameBody">
+			<div class="gameBody"> 
+				<div class="gameOptions">
+                    <div class="gameOptionsPresets">
+                    <div id="easyBtn" onclick="presetEasy()">Easy</div>
+                    <div id="mediumBtn" onclick="presetMedium()">Medium</div>
+                    <div id="hardBtn" onclick="presetHard()">Hard</div>
+                    </div>
+					<div class="gameOptionsCustom">
+						<h4>Custom</h4>
+						<label for="lengthInput">Length:</label>
+						<input type="number" id="lengthInput" name="length" min="2" max="50" value="10">
+
+						<label for="heightInput">Height:</label>
+						<input type="number" id="heightInput" name="height" min="2" max="50" value="10">
+
+						<label for="minesInput">Mines:</label>
+						<input type="number" id="minesInput" name="mines" min="2" max="250" value="10">
+					</div>
+				</div> 
 				<div class="gameDisplays">
 					<div id="bombsLeft"></div>
 					<div id="cellsLeft"></div>
