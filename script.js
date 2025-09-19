@@ -25,6 +25,8 @@ function updateLength() {
     sizeX = parseInt(lengthInput.value, 10) || 0;
     if (sizeX < 2) {
         sizeX = 2;
+    } else if (sizeX > 42) {
+        sizeX = 42;
     }
     maxBombs = sizeX * sizeY - 1;
     if (numberBombs > maxBombs) {
@@ -37,6 +39,8 @@ function updateHeight() {
     sizeY = parseInt(heightInput.value, 10) || 0;
     if (sizeY < 2) {
         sizeY = 2;
+    } else if (sizeY > 42) {
+        sizeY = 42;
     }
     maxBombs = sizeX * sizeY - 1;
     if (numberBombs > maxBombs) {
@@ -236,6 +240,7 @@ function revealCell(board, x, y, sizeX, sizeY) {
     if (x < 0 || x >= sizeX || y < 0 || y >= sizeY || board[y][x].isRevealed || board[y][x].isFlagged) {
         return board
     }
+    renderBoard(board, sizeX, sizeY);
     lost = false;
     if (board[y][x].isBomb) {
         board = revealAllBoard(board, sizeX, sizeY);
