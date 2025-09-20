@@ -217,6 +217,7 @@ function renderBoard(board, sizeX, sizeY) {
             }
             cell.addEventListener("click", () => {
                 board = revealCell(board, j, i, sizeX, sizeY);
+                renderBoard(board, sizeX, sizeY);
             });
             cell.addEventListener("contextmenu", (e) => {
                 e.preventDefault();
@@ -242,7 +243,6 @@ function revealCell(board, x, y, sizeX, sizeY) {
     if (x < 0 || x >= sizeX || y < 0 || y >= sizeY || board[y][x].isRevealed || board[y][x].isFlagged) {
         return board
     }
-    renderBoard(board, sizeX, sizeY);
     lost = false;
     if (board[y][x].isBomb) {
         board = revealAllBoard(board, sizeX, sizeY);
@@ -262,7 +262,6 @@ function revealCell(board, x, y, sizeX, sizeY) {
             }
         }
     }
-    renderBoard(board, sizeX, sizeY)
     if (cellsHidden == numberBombs && !lost) {
         lost = true
         setTimeout(() => {
